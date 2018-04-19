@@ -4,7 +4,9 @@ Plug 'ekalinin/Dockerfile.vim'
 Plug 'pearofducks/ansible-vim'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'scrooloose/nerdtree'
-Plug 'JamshedVesuna/vim-markdown-preview'
+"Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'tpope/vim-markdown'
+Plug 'suan/vim-instant-markdown'
 Plug 'SirVer/ultisnips'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'vim-airline/vim-airline'
@@ -23,6 +25,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'jiangmiao/auto-pairs'
 Plug 'majutsushi/tagbar'
 call plug#end()
+
+" enable filetype plugin
+filetype plugin on
 
 " devicons setup
 set guifont=SauceCodePro_Nerd_Font:h13
@@ -153,7 +158,6 @@ let g:go_auto_sameids = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark_minimal'
 
-" fatih copied settings
 set encoding=utf-8              " Set default encoding to UTF-8
 set backspace=indent,eol,start  " Makes backspace key more powerful.
 set number                   " Show line numbers
@@ -175,7 +179,7 @@ set nocursorline
 set updatetime=300
 set pumheight=10             " Completion window max size
 set conceallevel=2           " Concealed text is completely hidden
-
+set columns=80
 set lazyredraw
 
 syntax enable
@@ -214,6 +218,10 @@ augroup filetypedetect
 
   autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
   autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead Matchfile setf ruby
+  autocmd BufNewFile,BufRead Appfile setf ruby
+  autocmd BufNewFile,BufRead Gymfile setf ruby
+
 augroup END
 
 " autocomplete
@@ -221,5 +229,5 @@ filetype plugin indent on
 "set omnifunc=syntaxcomplete#Complete
 " markdown plugin viewer
 " https://github.com/JamshedVesuna/vim-markdown-preview
-let vim_markdown_preview_github=1
+"let vim_markdown_preview_github=1
 

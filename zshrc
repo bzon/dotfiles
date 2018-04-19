@@ -125,3 +125,5 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status zsh_showStatus)
 if [[ -f $HOME/.profile ]]; then
   source ~/.profile
 fi
+
+neofetch
