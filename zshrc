@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+export TERM="xterm-256color"
+
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/john.bryan.j.sazon/.oh-my-zsh
 
@@ -72,31 +74,31 @@ POWERLEVEL9K_TIME_BACKGROUND='green'
 HIST_STAMPS="mm/dd/yyyy"
 
 # Spotify show status
-prompt_zsh_showStatus () {
-  state=`osascript -e 'tell application "Spotify" to player state as string'`;
-  if [ $state = "playing" ]; then
-    artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
-    track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
+# prompt_zsh_showStatus () {
+#   state=`osascript -e 'tell application "Spotify" to player state as string'`;
+#   if [ $state = "playing" ]; then
+#     artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
+#     track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
 
-    echo -n "$artist - $track";
-  fi
-}
+#     echo -n "$artist - $track";
+#   fi
+# }
 
 # Context
-DEFAULT_USER=$USER
 POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=true
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='green'
-POWERLEVEL9K_CONTEXT_TEMPLATE="%F{cyan}%n%f"
+USER=bzon
+POWERLEVEL9K_CONTEXT_TEMPLATE="%F{cyan}$USER%f"
 POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='black'
 
 # Dirs
-POWERLEVEL9K_DIR_HOME_BACKGROUND='green'
+POWERLEVEL9K_DIR_HOME_BACKGROUND='blue'
 POWERLEVEL9K_DIR_HOME_FOREGROUND='black'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='green'
+POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='blue'
 POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='black'
 POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='yellow'
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='black'
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
+#POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
 POWERLEVEL9K_NVM_BACKGROUND='28'
@@ -120,10 +122,16 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status zsh_showStatus)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
 
 if [[ -f $HOME/.profile ]]; then
   source ~/.profile
 fi
 
-neofetch
+#neofetch
+
+# iterm
+PATH=$HOME/.iterm2:$PATH
+
+# colorls
+alias ls='colorls'
