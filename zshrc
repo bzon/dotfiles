@@ -4,7 +4,7 @@
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/john.bryan.j.sazon/.oh-my-zsh
+export ZSH=/Users/jb/.oh-my-zsh
 
 # User configuration
 
@@ -87,7 +87,6 @@ HIST_STAMPS="mm/dd/yyyy"
 # Context
 POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=true
 POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='green'
-USER=bzon
 POWERLEVEL9K_CONTEXT_TEMPLATE="%F{cyan}$USER%f"
 POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='black'
 
@@ -117,6 +116,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 plugins=(
   git
   zsh-autosuggestions
+  kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
