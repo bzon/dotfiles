@@ -87,7 +87,9 @@ syntax enable
 " Tab to switch to next buffer
 " Shift Tab to switch to previous buffer
 nnoremap <Tab> :bnext!<CR>
-nnoremap <S-Tab> :bprev!<CR><Paste>
+nnoremap <S-Tab> :bprev!<CR>
+nnoremap <C-Tab> :bd!<CR>
+
 
 " make tabs and spaces amazing  for code tbas
 set list listchars=nbsp:¬,tab:»·,trail:·,extends:>
@@ -115,24 +117,16 @@ au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
 " https://github.com/tomasiser/vim-code-dark#installation
 set t_Co=256
 set t_ut=
-colorscheme codedark
 
 " devicons setup
 set guifont=SauceCodePro_Nerd_Font:h13
 let g:airline_powerline_fonts = 1
+colorscheme codedark
 
 if has('nvim')
     " Enable deoplete on startup
     let g:deoplete#enable_at_startup = 1
 endif 
-
-" tabs
-nnoremap tn :tabnew<Space>
-nnoremap tk :tabnext<CR>
-nnoremap tj :tabprev<CR>
-nnoremap th :tabfirst<CR>
-nnoremap tl :tablast<CR>
-nnoremap tc :tabclose<CR>
 
 " mapleader
 let mapleader=","
@@ -167,7 +161,7 @@ let g:go_term_mode = "split"
 " auto GoInfo in vim status line
 let go_info_mode='guru'
 autocmd FileType go nmap <Leader>i <Plug>(go-info)
-" let g:go_auto_type_info = 1
+let g:go_auto_type_info = 1
 
 " set updatetime=100
 " run :GoBuild or :GoTestCompile based on the go file
@@ -233,7 +227,7 @@ autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setf tmux
 autocmd BufNewFile,BufRead .nginx.conf*,nginx.conf* setf nginx
 autocmd BufNewFile,BufRead *.hcl setf conf
 autocmd BufNewFile,BufRead *.go setlocal expandtab tabstop=4 shiftwidth=4
-autocmd BufNewFile,BufRead *.groovy setlocal expandtab ts=4 sw=4
+autocmd BufNewFile,BufRead *.groovy set expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.js setlocal expandtab noet ts=4 sw=4
 autocmd BufNewFile,BufRead *.md setlocal expandtab expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.zsh setlocal noet ts=2 sw=2
@@ -256,7 +250,7 @@ autocmd BufNewFile,BufRead Gymfile set syntax=ruby expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead Fastfile set syntax=ruby expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead Podfile* set syntax=ruby expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.rules set syntax=yaml expandtab ts=2 sw=2
-autocmd BufNewFile,BufRead Jenkinsfile setf groovy
+autocmd BufNewFile,BufRead Jenkinsfile* set expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.gradle setlocal noet ts=4 sw=4
 autocmd BufNewFile,BufRead Dockerfile* setlocal expandtab shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufRead *.tf setlocal ts=4 sw=4
