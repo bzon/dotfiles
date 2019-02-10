@@ -53,6 +53,9 @@ Plug 'SirVer/ultisnips'
 " <C-x><C-o> to activate autocompletion
 Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/nvim/symlink.sh' }
 
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
+
 " git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -150,20 +153,11 @@ au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
-
-let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
-
-" let g:go_snippet_engine = "automatic"
-
-" For :GoRun, :GoTest, etc
 let g:go_term_mode = "split"
-
-" auto GoInfo in vim status line
+let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
 let go_info_mode='guru'
-autocmd FileType go nmap <Leader>i <Plug>(go-info)
 let g:go_auto_type_info = 1
 
-" set updatetime=100
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
@@ -177,6 +171,7 @@ endfunction
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 let g:go_fmt_command = "goimports"
 let g:go_test_timeout = "1m"
+
 " Error and warning signs.
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
@@ -193,11 +188,9 @@ let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_types = 1
-" let g:go_highlight_space_tab_error = 0
-" let g:go_highlight_array_whitespace_error = 0
-" let g:go_highlight_trailing_whitespace_error = 0
-" let g:go_highlight_extra_types = 0
-" let g:go_highlight_format_strings = 0
+
+" Remove annoying popups on autocomplete go
+set completeopt-=preview
 
 " This will add new commands, called :A, :AV, :AS and :AT. Here :A works just
 " like :GoAlternate, it replaces the current buffer with the alternate file.
