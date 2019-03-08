@@ -49,9 +49,8 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'SirVer/ultisnips'
 
 " auto completion for go
-" https://github.com/mdempsky/gocode#vim-setup
 " <C-x><C-o> to activate autocompletion
-Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/nvim/symlink.sh' }
+Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 Plug 'Shougo/deoplete.nvim'
 Plug 'zchee/deoplete-go', { 'do': 'make'}
@@ -155,8 +154,8 @@ au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 let g:go_term_mode = "split"
 let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
-let go_info_mode='guru'
-let g:go_auto_type_info = 1
+" let go_info_mode='guru'
+" let g:go_auto_type_info = 1
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
