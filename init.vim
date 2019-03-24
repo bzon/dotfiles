@@ -29,6 +29,8 @@ Plug 'tpope/vim-surround'
 " colors
 Plug 'fatih/molokai'
 Plug 'tomasiser/vim-code-dark'
+Plug 'morhetz/gruvbox'
+Plug 'bluz71/vim-moonfly-colors'
 
 " docker
 Plug 'ekalinin/Dockerfile.vim'
@@ -50,6 +52,7 @@ Plug 'SirVer/ultisnips'
 
 " auto completion for go
 " <C-x><C-o> to activate autocompletion
+" Plug 'mdempsky/gocode', { 'rtp': 'nvim', 'do': '~/.vim/plugged/gocode/nvim/symlink.sh' }
 Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 Plug 'Shougo/deoplete.nvim'
@@ -123,7 +126,7 @@ set t_ut=
 " devicons setup
 set guifont=SauceCodePro_Nerd_Font:h13
 let g:airline_powerline_fonts = 1
-colorscheme codedark
+colorscheme moonfly
 
 if has('nvim')
     " Enable deoplete on startup
