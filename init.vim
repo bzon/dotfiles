@@ -11,6 +11,8 @@ Plug 'ryanoasis/vim-devicons'
 " auto pair a character {[()]}
 Plug 'jiangmiao/auto-pairs'
 
+Plug 'chase/vim-ansible-yaml'
+
 " make vim cool
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -87,7 +89,25 @@ set number
 set encoding=utf-8 
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
+
+
+" colors
+if has("termguicolors")
+    set termguicolors
+endif
+
 syntax enable
+set shell=/bin/zsh
+
+" colorscheme
+set t_Co=256
+set t_ut=
+colorscheme moonfly
+
+" devicons setup
+set guifont=SauceCodePro_Nerd_Font:h13
+let g:airline_powerline_fonts = 1
+
 
 " Tab to switch to next buffer
 " Shift Tab to switch to previous buffer
@@ -117,16 +137,6 @@ autocmd FileType terraform setlocal commentstring=#%s
 " Align GitHub-flavored Markdown tables
 " press <leader> + \ to fix a table alignment
 au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
-
-" colorscheme
-" https://github.com/tomasiser/vim-code-dark#installation
-set t_Co=256
-set t_ut=
-
-" devicons setup
-set guifont=SauceCodePro_Nerd_Font:h13
-let g:airline_powerline_fonts = 1
-colorscheme moonfly
 
 if has('nvim')
     " Enable deoplete on startup
@@ -226,7 +236,8 @@ autocmd BufNewFile,BufRead *.groovy set expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.js setlocal expandtab noet ts=4 sw=4
 autocmd BufNewFile,BufRead *.md setlocal expandtab expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.zsh setlocal noet ts=2 sw=2
-autocmd BufNewFile,BufRead *.yml setlocal expandtab ts=2 sw=2
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType yml setlocal ts=2 sts=2 sw=2 expandtab
 autocmd BufNewFile,BufRead *.yaml setlocal expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.json setlocal expandtab noet ts=2 sw=2
 autocmd BufNewFile,BufRead *.ino setlocal noet ts=4 sw=4 sts=4
