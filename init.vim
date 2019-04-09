@@ -33,6 +33,7 @@ Plug 'fatih/molokai'
 Plug 'tomasiser/vim-code-dark'
 Plug 'morhetz/gruvbox'
 Plug 'bluz71/vim-moonfly-colors'
+Plug 'lifepillar/vim-solarized8'
 
 " docker
 Plug 'ekalinin/Dockerfile.vim'
@@ -187,6 +188,17 @@ let g:go_test_timeout = "1m"
 " Error and warning signs.
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
+
+" Go ale settings
+let g:ale_linters = {'go': ['gometalinter', 'gofmt', 'revive', 'govet']}
+call ale#linter#Define('go', {
+\   'name': 'revive',
+\   'output_stream': 'both',
+\   'executable': 'revive',
+\   'read_buffer': 0,
+\   'command': 'revive %t',
+\   'callback': 'ale#handlers#unix#HandleAsWarning',
+\})
 
 let g:go_metalinter_autosave_enabled = ['gometalinter']
 let g:go_fmt_autosave = 1
