@@ -85,7 +85,7 @@ call plug#end()
 " =============================================================================
 "                     start: basic vim setup and utility shortcuts 
 " =============================================================================
-set cc=80
+set cc=100
 set number
 set encoding=utf-8 
 set splitright               " Split vertical windows right to the current windows
