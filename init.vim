@@ -83,14 +83,27 @@ Plug 'chrisbra/Colorizer'
 call plug#end()
 
 " =============================================================================
-"                     start: basic vim setup and utility shortcuts 
+"                     start: basic vim setup and utility shortcuts
 " =============================================================================
 set cc=100
 set number
-set encoding=utf-8 
+set encoding=utf-8
 set splitright               " Split vertical windows right to the current windows
 set splitbelow               " Split horizontal windows below to the current windows
 
+" My Shortcuts
+" display color column in lightgrey color
+nnoremap cc :hi ColorColumn ctermbg=lightgrey guibg=lightgrey<CR>
+" Remove higlights
+nnoremap <space> :nohl<CR>
+" Next tab
+nnoremap n<Tab> :bnext!<CR>
+" Previous tab
+nnoremap p<Tab> :bprev!<CR>
+" Close tab
+nnoremap c<Tab> :bd!<CR>
+" Trim all whitespaces
+:nnoremap tws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 " colors
 if has("termguicolors")
@@ -110,22 +123,16 @@ set guifont=SauceCodePro_Nerd_Font:h13
 let g:airline_powerline_fonts = 1
 
 
-" Tab to switch to next buffer
-" Shift Tab to switch to previous buffer
-nnoremap <Tab> :bnext!<CR>
-nnoremap <S-Tab> :bprev!<CR>
-nnoremap <C-Tab> :bd!<CR>
-
 
 " make tabs and spaces amazing  for code tbas
 set list listchars=nbsp:¬,tab:»·,trail:·,extends:>
 
 " =============================================================================
-"                     end: basic vim setup and utility shortcuts 
+"                     end: basic vim setup and utility shortcuts
 " =============================================================================
 
 """ markdown settings
-" Syntax highlight is synchronized in 50 lines. It may cause collapsed highlighting 
+" Syntax highlight is synchronized in 50 lines. It may cause collapsed highlighting
 " at large fenced code block. In the case, please set larger value
 let g:markdown_minlines = 100
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'go', 'json', 'yaml']
@@ -142,7 +149,7 @@ au FileType markdown vmap <Leader><Bslash> :EasyAlign*<Bar><Enter>
 if has('nvim')
     " Enable deoplete on startup
     let g:deoplete#enable_at_startup = 1
-endif 
+endif
 
 " mapleader
 let mapleader=","
@@ -150,9 +157,6 @@ let mapleader=","
 " togglable shortcuts
 nmap <F8> :TagbarToggle<CR>
 nmap <leader>p :NERDTreeToggle<CR>
-
-" Press F5 to trim all whitespaces
-:nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 " ==============================================
 " vim-go
@@ -219,7 +223,7 @@ set completeopt-=preview
 " This will add new commands, called :A, :AV, :AS and :AT. Here :A works just
 " like :GoAlternate, it replaces the current buffer with the alternate file.
 " :AV will open a new vertical split with the alternate file. :AS will open
-" the alternate file in a new split view and :AT in a new tab. 
+" the alternate file in a new split view and :AT in a new tab.
 autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
