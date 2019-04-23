@@ -13,6 +13,8 @@ Plug 'jiangmiao/auto-pairs'
 
 Plug 'chase/vim-ansible-yaml'
 
+Plug 'buoto/gotests-vim'
+
 " make vim cool
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
