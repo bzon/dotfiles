@@ -97,7 +97,7 @@ nnoremap cc :hi ColorColumn ctermbg=lightgrey guibg=lightgrey<CR>
 " Remove higlights
 nnoremap <space> :nohl<CR>
 " Next tab
-nnoremap n<Tab> :bnext!<CR>
+nnoremap <Tab> :bnext!<CR>
 " Previous tab
 nnoremap p<Tab> :bprev!<CR>
 " Close tab
