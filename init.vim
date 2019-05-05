@@ -11,6 +11,9 @@ Plug 'ryanoasis/vim-devicons'
 " auto pair a character {[()]}
 Plug 'jiangmiao/auto-pairs'
 
+" Autotest 
+Plug 'buoto/gotests-vim'
+
 Plug 'chase/vim-ansible-yaml'
 
 Plug 'buoto/gotests-vim'
@@ -105,9 +108,11 @@ nnoremap p<Tab> :bprev!<CR>
 " Close tab
 nnoremap c<Tab> :bd!<CR>
 " Trim all whitespaces
-:nnoremap tws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+nnoremap tws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+" GoInfo
+nnoremap <space>i :GoInfo<CR>
 
-" colors
+"" colors
 if has("termguicolors")
     set termguicolors
 endif
@@ -195,16 +200,16 @@ let g:go_test_timeout = "1m"
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 
-" Go ale settings
-let g:ale_linters = {'go': ['gometalinter', 'gofmt', 'revive', 'govet']}
-call ale#linter#Define('go', {
-\   'name': 'revive',
-\   'output_stream': 'both',
-\   'executable': 'revive',
-\   'read_buffer': 0,
-\   'command': 'revive %t',
-\   'callback': 'ale#handlers#unix#HandleAsWarning',
-\})
+" " Go ale settings
+" let g:ale_linters = {'go': ['gometalinter', 'gofmt', 'revive', 'govet']}
+" call ale#linter#Define('go', {
+" \   'name': 'revive',
+" \   'output_stream': 'both',
+" \   'executable': 'revive',
+" \   'read_buffer': 0,
+" \   'command': 'revive %t',
+" \   'callback': 'ale#handlers#unix#HandleAsWarning',
+" \})
 
 let g:go_metalinter_autosave_enabled = ['gometalinter']
 let g:go_fmt_autosave = 1
@@ -246,6 +251,7 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+autocmd BufNewFile,BufRead *.proto setfiletype proto
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setf tmux
 autocmd BufNewFile,BufRead .nginx.conf*,nginx.conf* setf nginx
 autocmd BufNewFile,BufRead *.hcl setf conf
