@@ -11,6 +11,9 @@ Plug 'ryanoasis/vim-devicons'
 " auto pair a character {[()]}
 Plug 'jiangmiao/auto-pairs'
 
+" Vue/Javascript 
+Plug 'posva/vim-vue'
+
 " Autotest 
 Plug 'buoto/gotests-vim'
 
