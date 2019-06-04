@@ -99,6 +99,7 @@ nnoremap tws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :u
 " GoInfo
 nnoremap <space>i :GoInfo<CR>
 
+
 "" colors
 if has("termguicolors")
     set termguicolors
@@ -152,6 +153,9 @@ let mapleader=","
 nmap <F8> :TagbarToggle<CR>
 nmap <leader>p :NERDTreeToggle<CR>
 
+" terraform
+nmap <leader>tp :Terraform plan<CR>
+
 " ==============================================
 " vim-go
 " ==============================================
@@ -164,6 +168,8 @@ au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 let g:go_term_mode = "split"
 let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
 
@@ -396,7 +402,8 @@ autocmd BufNewFile,BufRead *.rules set syntax=yaml expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead Jenkinsfile* set expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.gradle setlocal noet ts=4 sw=4
 autocmd BufNewFile,BufRead Dockerfile* setlocal expandtab shiftwidth=2 tabstop=2
-autocmd BufNewFile,BufRead *.tf setlocal ts=4 sw=4
-autocmd BufNewFile,BufRead *.tfvars setlocal ts=4 sw=4
-autocmd BufNewFile,BufRead *.proto setlocal ts=4 sw=4
+autocmd BufNewFile,BufRead *.tf setlocal ts=2 sw=2
+autocmd BufNewFile,BufRead *.tfvars setlocal ts=2 sw=2
+autocmd BufNewFile,BufRead *.proto setlocal ts=2 sw=2
+autocmd BufWritePre *.tf :TerraformFmt
 filetype plugin indent on
