@@ -269,10 +269,10 @@ let g:ale_sign_warning = '⚠'
 
 " " Go ale settings
 let g:ale_linters = {
-	\ 'go': ['gopls', 'golangci-lint --tests=false'],
+	\ 'go': ['gopls', 'golangci-lint --tests=false --disable=typecheck'],
 	\}
 
-let g:go_metalinter_autosave_enabled = ['gometalinter']
+" let g:go_metalinter_autosave_enabled = ['gometalinter']
 let g:go_fmt_autosave = 1
 
 " highlights
