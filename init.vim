@@ -29,7 +29,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Async as you type code linting at its finest. Zero config needed.
-Plug 'w0rp/ale'
+Plug 'dense-analysis/ale'
 
 " auto comment
 " highlight line/s and then press g + c to comment
@@ -111,7 +111,8 @@ set shell=/bin/zsh
 " colorscheme
 set t_Co=256
 set t_ut=
-colorscheme moonfly
+" colorscheme moonfly
+colorscheme gruvbox
 
 " devicons setup
 set guifont=SauceCodePro_Nerd_Font:h13
@@ -268,7 +269,7 @@ let g:ale_sign_warning = '⚠'
 
 " " Go ale settings
 let g:ale_linters = {
-	\ 'go': ['gopls'],
+	\ 'go': ['gopls', 'golangci-lint --tests=false'],
 	\}
 
 let g:go_metalinter_autosave_enabled = ['gometalinter']
@@ -386,6 +387,7 @@ autocmd BufNewFile,BufRead *.yaml setlocal expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.json setlocal expandtab noet ts=2 sw=2
 autocmd BufNewFile,BufRead *.ino setlocal noet ts=4 sw=4 sts=4
 autocmd BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
+autocmd BufNewFile,BufRead *.sql setlocal expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufRead *.hcl setlocal expandtab shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
