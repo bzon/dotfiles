@@ -85,9 +85,9 @@ set splitbelow               " Split horizontal windows below to the current win
 
 " My Shortcuts
 " display color column in lightgrey color
-nnoremap cc :hi ColorColumn ctermbg=lightgrey guibg=lightgrey<CR>
+"nnoremap cc :hi ColorColumn ctermbg=lightgrey guibg=lightgrey<CR>
 " Remove higlights
-nnoremap <space> :nohl<CR>
+nnoremap rh :nohl<CR>
 " Next tab
 nnoremap <Tab> :bnext!<CR>
 " Previous tab
@@ -98,7 +98,7 @@ nnoremap c<Tab> :bd!<CR>
 nnoremap tws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 " GoInfo
 nnoremap <space>i :GoInfo<CR>
-
+" retab
 
 "" colors
 if has("termguicolors")
@@ -153,9 +153,6 @@ let mapleader=","
 " togglable shortcuts
 nmap <F8> :TagbarToggle<CR>
 nmap <leader>p :NERDTreeToggle<CR>
-
-" terraform
-nmap <leader>tp :Terraform plan<CR>
 
 " ==============================================
 " vim-go
@@ -269,7 +266,7 @@ let g:ale_sign_warning = '⚠'
 
 " " Go ale settings
 let g:ale_linters = {
-	\ 'go': ['gopls', 'golangci-lint --tests=false --disable=typecheck'],
+	\ 'go': ['golint', 'gopls', 'golangci-lint --tests=false --disable=typecheck --enable=gosimple'],
 	\}
 
 " let g:go_metalinter_autosave_enabled = ['gometalinter']
@@ -296,6 +293,11 @@ autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+" Terraform
+autocmd BufNewFile,BufRead *.tf  nnoremap tp :Terraform plan<CR>
+autocmd BufNewFile,BufRead *.tf  nnoremap tg :Terraform get -update<CR>
+autocmd BufNewFile,BufRead *.tf  nnoremap ti :Terraform init<CR>
 
 " =======================================================
 " Web development
@@ -387,7 +389,7 @@ autocmd BufNewFile,BufRead *.yaml setlocal expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.json setlocal expandtab noet ts=2 sw=2
 autocmd BufNewFile,BufRead *.ino setlocal noet ts=4 sw=4 sts=4
 autocmd BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
-autocmd BufNewFile,BufRead *.sql setlocal expandtab ts=2 sw=2
+autocmd BufNewFile,BufRead *.sql setlocal noexpandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufRead *.hcl setlocal expandtab shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
