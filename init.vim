@@ -136,6 +136,7 @@ let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'go', 'json', 'y
 " terraform
 let g:terraform_align=1
 let g:terraform_remap_spacebar=1
+let g:terraform_fmt_on_save=1
 autocmd FileType terraform setlocal commentstring=#%s
 
 " Align GitHub-flavored Markdown tables
@@ -267,6 +268,7 @@ let g:ale_sign_warning = '⚠'
 " " Go ale settings
 let g:ale_linters = {
 	\ 'go': ['golint', 'gopls', 'golangci-lint --tests=false --disable=typecheck --enable=gosimple'],
+  \ 'terraform': [''],
 	\}
 
 " let g:go_metalinter_autosave_enabled = ['gometalinter']
@@ -409,5 +411,4 @@ autocmd BufNewFile,BufRead Dockerfile* setlocal expandtab shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufRead *.tf setlocal ts=2 sw=2
 autocmd BufNewFile,BufRead *.tfvars setlocal ts=2 sw=2
 autocmd BufNewFile,BufRead *.proto setlocal ts=2 sw=2
-autocmd BufWritePre *.tf :TerraformFmt
 filetype plugin indent on
