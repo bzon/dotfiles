@@ -29,7 +29,7 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Prompt settings
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
 
 # VCS icons
 POWERLEVEL9K_VCS_GIT_ICON=$''
@@ -115,12 +115,17 @@ plugins=(
   git
   zsh-autosuggestions
   kubectl
+  kube-ps1
 )
 
-source $ZSH/oh-my-zsh.sh
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vcs kubecontext)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+# The output of the kube_ps1 function is text, so it can be used
+# directly as a custom p9k segment
+POWERLEVEL9K_CUSTOM_KUBE_PS1='kube_ps1'
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(custom_kube_ps1)
+
+source $ZSH/oh-my-zsh.sh
 
 if [[ -f $HOME/.profile ]]; then
   source ~/.profile
