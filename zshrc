@@ -30,8 +30,6 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Prompt settings
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
 POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="%K{white}%k"
-POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%K{black}%F{green} \uf155%f%F{black} %k\ue0b0%f "
 
 # VCS icons
 POWERLEVEL9K_VCS_GIT_ICON=$''
@@ -121,8 +119,8 @@ plugins=(
 
 source $ZSH/oh-my-zsh.sh
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context vcs kubecontext)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 
 if [[ -f $HOME/.profile ]]; then
   source ~/.profile
@@ -135,3 +133,7 @@ PATH=$HOME/.iterm2:$PATH
 
 # colorls
 alias ls='colorls'
+
+autoload -U colors; colors
+source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
+RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
