@@ -4,9 +4,14 @@
 export TERM="xterm-256color"
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/jb/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
-# User configuration
+# tmux
+ZSH_TMUX_AUTOSTART=true
+
+# ensure zsh is use in tmux
+autoload colors zsh/terminfo
+colors
 
 # Coloured man pages using less as pager
 man() {
@@ -21,91 +26,12 @@ man() {
 	      man "$@"
 }
 
-# Font mode for powerlevel9k
-POWERLEVEL9K_MODE="nerdfont-complete"
-
 # Set name of the theme to load.
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-# Prompt settings
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
-
-# VCS icons
-POWERLEVEL9K_VCS_GIT_ICON=$''
-POWERLEVEL9K_VCS_GIT_GITHUB_ICON=$'\uf113 '
-POWERLEVEL9K_VCS_GIT_GITLAB_ICON=$'\uf296 '
-POWERLEVEL9K_VCS_BRANCH_ICON=$'\uF126 '
-POWERLEVEL9K_VCS_STAGED_ICON=$'\uf055'
-POWERLEVEL9K_VCS_UNSTAGED_ICON=$'\uf421'
-POWERLEVEL9K_VCS_UNTRACKED_ICON=$'\uf00d'
-POWERLEVEL9K_VCS_INCOMING_CHANGES_ICON=$'\uf0ab '
-POWERLEVEL9K_VCS_OUTGOING_CHANGES_ICON=$'\uf0aa '
-
-# VCS colours
-POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='black'
-POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='red'
-POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='black'
-POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='yellow'
-POWERLEVEL9K_VCS_CLEAN_BACKGROUND='black'
-POWERLEVEL9K_VCS_CLEAN_FOREGROUND='green'
-
-# VCS CONFIG
-POWERLEVEL9K_SHOW_CHANGESET=false
-
-# Status
-POWERLEVEL9K_OK_ICON=$'\uf164'
-POWERLEVEL9K_FAIL_ICON=$'\uf165'
-POWERLEVEL9K_CARRIAGE_RETURN_ICON=$'\uf165'
-
-# Battery
-POWERLEVEL9K_BATTERY_LOW_FOREGROUND='red'
-POWERLEVEL9K_BATTERY_CHARGING_FOREGROUND='yellow'
-POWERLEVEL9K_BATTERY_CHARGED_FOREGROUND='green'
-POWERLEVEL9K_BATTERY_DISCONNECTED_FOREGROUND='blue'
-
-# Time
-POWERLEVEL9K_TIME_FORMAT="%F{black}\uf017 %D{%I:%M}%f"
-POWERLEVEL9K_TIME_BACKGROUND='green'
-
-# Command execution time stamp shown in the history command output.
-HIST_STAMPS="mm/dd/yyyy"
-
-# Spotify show status
-# prompt_zsh_showStatus () {
-#   state=`osascript -e 'tell application "Spotify" to player state as string'`;
-#   if [ $state = "playing" ]; then
-#     artist=`osascript -e 'tell application "Spotify" to artist of current track as string'`;
-#     track=`osascript -e 'tell application "Spotify" to name of current track as string'`;
-
-#     echo -n "$artist - $track";
-#   fi
-# }
-
-# Context
-POWERLEVEL9K_ALWAYS_SHOW_CONTEXT=true
-POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='green'
-POWERLEVEL9K_CONTEXT_TEMPLATE="%F{cyan}$USER%f"
-POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='black'
-
-# Dirs
-POWERLEVEL9K_DIR_HOME_BACKGROUND='blue'
-POWERLEVEL9K_DIR_HOME_FOREGROUND='black'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='blue'
-POWERLEVEL9K_DIR_HOME_SUBFOLDER_FOREGROUND='black'
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND='yellow'
-POWERLEVEL9K_DIR_DEFAULT_FOREGROUND='black'
-#POWERLEVEL9K_SHORTEN_DIR_LENGTH=3
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
-
-POWERLEVEL9K_NVM_BACKGROUND='28'
-POWERLEVEL9K_NVM_FOREGROUND='15'
-POWERLEVEL9K_TIME_FORMAT="%D{%H:%M \uE868  %d.%m}"
+source ~/Github/bzon/dotfiles/powerleverl9k.zsh
 
 source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -118,27 +44,38 @@ plugins=(
   kube-ps1
 )
 
-
-# The output of the kube_ps1 function is text, so it can be used
-# directly as a custom p9k segment
-POWERLEVEL9K_CUSTOM_KUBE_PS1='kube_ps1'
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(custom_kube_ps1)
-
-source $ZSH/oh-my-zsh.sh
-
 if [[ -f $HOME/.profile ]]; then
   source ~/.profile
 fi
+
+source $ZSH/oh-my-zsh.sh
 
 #neofetch
 
 # iterm
 PATH=$HOME/.iterm2:$PATH
 
-# colorls
-alias ls='colorls'
+source $HOME/google-cloud-sdk/completion.zsh.inc
 
-autoload -U colors; colors
-source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
-RPROMPT='%{$fg[blue]%}($ZSH_KUBECTL_PROMPT)%{$reset_color%}'
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+
+# added by travis gem
+[ -f /Users/jb/.travis/travis.sh ] && source /Users/jb/.travis/travis.sh
+
+# Disable suggestions
+_zsh_autosuggest_disable() {
+	typeset -g _ZSH_AUTOSUGGEST_DISABLED
+	_zsh_autosuggest_clear
+	zle -N self-insert url-quote-magic
+}
+
+# Enable suggestions
+_zsh_autosuggest_enable() {
+	unset _ZSH_AUTOSUGGEST_DISABLED
+	zle -N self-insert _zsh_autosuggest_bound_1_self-insert
+
+	if [ $#BUFFER -gt 0 ]; then
+		_zsh_autosuggest_fetch
+	fi
+}

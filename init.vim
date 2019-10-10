@@ -112,7 +112,7 @@ set shell=/bin/zsh
 set t_Co=256
 set t_ut=
 " colorscheme moonfly
-colorscheme gruvbox
+colorscheme codedark
 
 " devicons setup
 set guifont=SauceCodePro_Nerd_Font:h13

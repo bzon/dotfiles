@@ -68,6 +68,7 @@ brew install zsh-autosuggestions
 brew install zsh-syntax-highlighting
 gem install colorls
 brew install neofetch
+brew install kube-ps1
 ```
 
 Configure zshrc file:
