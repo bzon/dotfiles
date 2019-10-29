@@ -1,5 +1,5 @@
 function git_describe {
-	git describe --tags --always --dirty
+	git describe --tags --always --dirty 2> /dev/null
 }
 
 POWERLEVEL9K_MODE='nerdfont-complete'
