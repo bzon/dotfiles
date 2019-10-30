@@ -55,7 +55,6 @@ source $ZSH/oh-my-zsh.sh
 # iterm
 PATH=$HOME/.iterm2:$PATH
 
-source $HOME/google-cloud-sdk/completion.zsh.inc
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
