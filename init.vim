@@ -16,6 +16,10 @@ Plug 'fatih/vim-go'
 " LSP client
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
+" Rego
+Plug 'tsandall/vim-rego'
+Plug 'Chiel92/vim-autoformat'
+
 " Web development
 Plug 'posva/vim-vue'
 Plug 'ap/vim-css-color'
@@ -98,7 +102,9 @@ nnoremap c<Tab> :bd!<CR>
 nnoremap tws :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 " GoInfo
 nnoremap <space>i :GoInfo<CR>
-" retab
+" Copy/Paste to system clipboard
+noremap <Leader>y "*y
+noremap <Leader>p "*p 
 
 "" colors
 if has("termguicolors")
@@ -117,8 +123,6 @@ colorscheme codedark
 " devicons setup
 set guifont=SauceCodePro_Nerd_Font:h13
 let g:airline_powerline_fonts = 1
-
-
 
 " make tabs and spaces amazing  for code tbas
 set list listchars=nbsp:¬,tab:»·,trail:·,extends:>
@@ -374,6 +378,13 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Rego
+let g:formatdef_rego = '"opa fmt"'
+let g:formatters_rego = ['rego']
+let g:autoformat_autoindent = 1
+let g:autoformat_retab = 1
+let g:autoformat_verbosemode = 1
+
 autocmd BufNewFile,BufRead *.proto setfiletype proto
 autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setf tmux
 autocmd BufNewFile,BufRead .nginx.conf*,nginx.conf* setf nginx
@@ -406,6 +417,7 @@ autocmd BufNewFile,BufRead Fastfile set syntax=ruby expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead Podfile* set syntax=ruby expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.rules set syntax=yaml expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead Jenkinsfile* set expandtab ts=2 sw=2
+autocmd BufNewFile,BufRead Makefile set expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.gradle setlocal noet ts=4 sw=4
 autocmd BufNewFile,BufRead Dockerfile* setlocal expandtab shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufRead *.tf setlocal ts=2 sw=2
