@@ -16,6 +16,11 @@ Plug 'fatih/vim-go'
 " LSP client
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
+" fzf
+" https://github.com/junegunn/fzf.vim
+Plug '/usr/local/opt/fzf'
+Plug 'junegunn/fzf.vim'
+
 " Rego
 Plug 'tsandall/vim-rego'
 Plug 'Chiel92/vim-autoformat'
