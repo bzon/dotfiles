@@ -423,7 +423,7 @@ autocmd BufNewFile,BufRead Fastfile set syntax=ruby expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead Podfile* set syntax=ruby expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead *.rules set syntax=yaml expandtab ts=2 sw=2
 autocmd BufNewFile,BufRead Jenkinsfile* set expandtab ts=2 sw=2
-autocmd BufNewFile,BufRead Makefile set expandtab ts=2 sw=2
+autocmd BufNewFile,BufRead Makefile set noet ts=2 sw=2
 autocmd BufNewFile,BufRead *.gradle setlocal noet ts=4 sw=4
 autocmd BufNewFile,BufRead Dockerfile* setlocal expandtab shiftwidth=2 tabstop=2
 autocmd BufNewFile,BufRead *.tf setlocal ts=2 sw=2
