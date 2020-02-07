@@ -13,8 +13,8 @@ Plug 'jiangmiao/auto-pairs'
 
 " Golang
 Plug 'fatih/vim-go'
-" LSP client
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " fzf
 " https://github.com/junegunn/fzf.vim
@@ -184,7 +184,7 @@ let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_rename_command='gopls'
-
+let g:ale_go_golangci_lint_options = ''
 
 " ==============================================
 " coc.nvim default settings
@@ -277,7 +277,7 @@ let g:ale_sign_warning = '⚠'
 
 " " Go ale settings
 let g:ale_linters = {
-	\ 'go': ['golint', 'gopls', 'golangci-lint --tests=false --disable=typecheck --enable=gosimple'],
+	\ 'go': ['gopls', 'golangci-lint'],
   \ 'terraform': [''],
 	\}
 
