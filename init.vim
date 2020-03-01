@@ -174,7 +174,6 @@ au FileType go nmap <leader>gt :GoDeclsDir<cr>
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
 au FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
@@ -305,6 +304,12 @@ autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
 autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
 autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+" Run additional commands when saving files.
+augroup auto_go
+	autocmd!
+	autocmd BufWritePost *.go :GoBuild
+augroup end
 
 " Terraform
 autocmd BufNewFile,BufRead *.tf  nnoremap tp :Terraform plan<CR>
