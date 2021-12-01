@@ -124,6 +124,7 @@ set t_Co=256
 set t_ut=
 " colorscheme moonfly
 colorscheme codedark
+" colorscheme molokai
 
 " devicons setup
 set guifont=SauceCodePro_Nerd_Font:h13
@@ -183,7 +184,10 @@ let g:go_fold_enable = ['block', 'import', 'varconst', 'package_comment']
 let g:go_def_mode='gopls'
 let g:go_info_mode='gopls'
 let g:go_rename_command='gopls'
-let g:ale_go_golangci_lint_options = ''
+" let g:ale_go_golangci_lint_options='--exclude-use-default=false'
+let g:go_metalinter_enabled = 0
+let g:go_metalinter_autosave = 0
+let g:go_metalinter_autosave_enabled = []
 
 " ==============================================
 " coc.nvim default settings
@@ -276,7 +280,7 @@ let g:ale_sign_warning = '⚠'
 
 " " Go ale settings
 let g:ale_linters = {
-	\ 'go': ['gopls', 'golangci-lint'],
+	\ 'go': ['golint',  'gopls', 'golangci-lint'],
   \ 'terraform': [''],
 	\}
 

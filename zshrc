@@ -29,9 +29,7 @@ man() {
 # Set name of the theme to load.
 ZSH_THEME="powerlevel9k/powerlevel9k"
 
-source ~/Github/bzon/dotfiles/powerleverl9k.zsh
-
-source /usr/local/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source ~/powerlevel9k.zsh
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -50,7 +48,9 @@ fi
 
 source $ZSH/oh-my-zsh.sh
 
-#neofetch
+
+# Autocompletions
+source <(stern --completion=zsh)
 
 # iterm
 PATH=$HOME/.iterm2:$PATH
@@ -78,3 +78,4 @@ _zsh_autosuggest_enable() {
 		_zsh_autosuggest_fetch
 	fi
 }
+export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"

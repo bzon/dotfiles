@@ -5,6 +5,9 @@
 * [Prerequisites](#prerequisites)
 * [Frameworks](#frameworks)
 * [Prettify Terminal](#prettify-terminal)
+  * [Install Oh My Zsh](#install-oh-my-zsh)
+  * [Install Oh My Zsh plugins and extra utilities](#install-oh-my-zsh-plugins-and-extra-utilities)
+  * [Configure zshrc file](#configure-zshrc-file)
 * [NeoVim and Plugins](#neovim-and-plugins)
 
 <!-- vim-markdown-toc -->
@@ -42,7 +45,7 @@ Download and install __Go for MacOS__ [here](https://golang.org/doc/install)
 
 ## Prettify Terminal
 
-Install Oh My Zsh:
+### Install Oh My Zsh
 
 ```bash
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
@@ -57,11 +60,18 @@ git clone https://github.com/bhilburn/powerlevel9k.git ~/.oh-my-zsh/custom/theme
 Install Powerline Nerd font:
 
 ```bash
-brew tap caskroom/fonts
-brew cask install font-sourcecodepro-nerd-font
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+brew install --cask font-sourcecodepro-nerd-font
 ```
 
-Install Oh My Zsh plugins and extra utilities:
+Install customization to powerlevel9k theme:
+
+```bash
+curl -fsSL -o ~/powerlevel9k.zsh https://raw.githubusercontent.com/bzon/dotfiles/master/powerlevel9k.zsh
+```
+
+### Install Oh My Zsh plugins and extra utilities
 
 ```bash
 brew install zsh-autosuggestions
@@ -71,9 +81,15 @@ brew install neofetch
 brew install kube-ps1
 ```
 
-Configure zshrc file:
+### Configure zshrc file
 
-Copy `./zshrc` to `~/.zshrc`.
+* Backup the existing `./zshrc` for safety.
+* Install the zshrc of this repo:
+  ```bash
+  curl -fsSL -o /.zshrc https://raw.githubusercontent.com/bzon/dotfiles/master/zshrc
+  ```
+* Run `brew info zsh-syntax-highlighting` and follow the instructions related to modification in the zshrc.
+* Run `brew info zsh-autosuggestions` and follow the instructions related to modification in the zshrc.
 
 ## NeoVim and Plugins
 
